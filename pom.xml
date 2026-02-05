@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.stsm.compat</groupId>
-  <artifactId>mintskin_android_compat</artifactId>
+  <artifactId>image_io_compat</artifactId>
   <version>0.2.0</version>
   <packaging>jar</packaging>
 
-  <name>MintSkin Android Compat</name>
-  <description>Android compatibility patch mod for MintSkinLewdTheSpire (avoid javax.imageio crash)</description>
+  <name>Image IO Compat</name>
+  <description>Android compatibility patch mod</description>
 
   <!--
     This POM is intentionally "ExampleMod-style":

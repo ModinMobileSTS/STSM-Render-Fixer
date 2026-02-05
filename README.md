@@ -23,6 +23,13 @@ in mods like MintSkinLewdTheSpire.
 mvn -q clean package
 ```
 
+## Develop
+If you see many errors in your IDE, try this:
+
+1. Go File → Project Structure → Modules → Dependencies
+
+2. Find and add ModTheSpire.jar desktop-1.0.jar BaseMod.jar
+
 After packaging, the POM copies the jar to:
 `{Steam.path}/common/SlayTheSpire/mods/mintskin_android_compat.jar`
 

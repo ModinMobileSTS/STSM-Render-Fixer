@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.stsm.compat</groupId>
+  <artifactId>mintskin_android_compat</artifactId>
+  <version>0.2.0</version>
+  <packaging>jar</packaging>
+
+  <name>MintSkin Android Compat</name>
+  <description>Android compatibility patch mod for MintSkinLewdTheSpire (avoid javax.imageio crash)</description>
+
+  <!--
+    This POM is intentionally "ExampleMod-style":
+    - uses system-scope jars from your local Steam / Workshop install
+    - copies the built jar into Slay the Spire's /mods folder at package time
+  -->
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!-- Change this to your Steam library root (the folder that contains /common and /workshop). -->
+    <Steam.path>E:\SteamLibrary\steamapps</Steam.path>
+
+    <!-- Desktop game jar -->
+    <SlayTheSpire.jar>${Steam.path}/common/SlayTheSpire/desktop-1.0.jar</SlayTheSpire.jar>
+
+    <!-- Workshop paths below are examples; your IDs can differ. -->
+    <ModTheSpire.jar>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</ModTheSpire.jar>
+    <BaseMod.jar>${Steam.path}/workshop/content/646570/1605833019/BaseMod.jar</BaseMod.jar>
+  </properties>
+
+  <dependencies>
+    <!-- Not strictly required for this compat mod, but kept to mirror the "official ExampleMod" style. -->
+    <dependency>
+      <groupId>com.megacrit.cardcrawl</groupId>
+      <artifactId>slaythespire</artifactId>
+      <version>local</version>
+      <scope>system</scope>
+      <systemPath>${SlayTheSpire.jar}</systemPath>
+    </dependency>
+
+    <!-- REQUIRED: provides SpirePatch/SpireRawPatch annotations + Javassist -->
+    <dependency>
+      <groupId>com.evacipated.cardcrawl</groupId>
+      <artifactId>ModTheSpire</artifactId>
+      <version>local</version>
+      <scope>system</scope>
+      <systemPath>${ModTheSpire.jar}</systemPath>
+    </dependency>
+
+    <!-- Optional -->
+    <dependency>
+      <groupId>basemod</groupId>
+      <artifactId>basemod</artifactId>
+      <version>local</version>
+      <scope>system</scope>
+      <systemPath>${BaseMod.jar}</systemPath>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- Copy the built jar into Slay the Spire's /mods directory (ExampleMod-style). -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <mkdir dir="${Steam.path}/common/SlayTheSpire/mods" />
+                <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                      tofile="${Steam.path}/common/SlayTheSpire/mods/${project.build.finalName}.jar" />
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

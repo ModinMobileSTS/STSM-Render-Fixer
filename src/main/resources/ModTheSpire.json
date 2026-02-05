@@ -1,0 +1,12 @@
+{
+  "modid": "mintskin_android_compat",
+  "name": "MintSkin Android Compat",
+  "author_list": [
+    "Apricityx"
+  ],
+  "description": "Android compatibility patch: disable utils.GifHelper ImageIO-based gif loading to avoid crashes.",
+  "version": "0.2.0",
+  "sts_version": "12-22-2020",
+  "mts_version": "3.23.2",
+  "dependencies": []
+}

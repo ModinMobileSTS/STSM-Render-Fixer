@@ -16,7 +16,7 @@ import javassist.CtMethod;
  * So we use setBody(...) to REPLACE the method implementation, avoiding stackmap resolution of the original code.
  */
 @SpireInitializer
-public class MintSkinAndroidCompat {
+public class ImageIOCompat {
 
     public static void initialize() {
         // Required by ModTheSpire, can be empty.

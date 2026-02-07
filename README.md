@@ -1,4 +1,4 @@
-# MintSkin Android Compat (Maven)
+# ImageIOCompat (Maven)
 
 This is a small ModTheSpire patch mod that prevents Android crashes caused by desktop-only `javax.imageio.*` usage
 in mods like MintSkinLewdTheSpire.

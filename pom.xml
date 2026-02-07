@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.stsm.compat</groupId>
-  <artifactId>image_io_compat</artifactId>
-  <version>0.2.0</version>
+  <artifactId>stsm-render-fixer</artifactId>
+  <version>0.4.6</version>
   <packaging>jar</packaging>
 
-  <name>Image IO Compat</name>
-  <description>Android compatibility patch mod</description>
+  <name>STSM Render Fixer</name>
+  <description>Android render/runtime compatibility patch mod (STSM Render Fixer)</description>
 
   <!--
     This POM is intentionally "ExampleMod-style":
@@ -65,7 +65,7 @@
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>stsm-render-fixer</finalName>
 
     <plugins>
       <plugin>

@@ -1,7 +1,11 @@
-# ImageIOCompat (Maven)
+# STSM Render Fixer
 
 This is a small ModTheSpire patch mod that prevents Android crashes caused by desktop-only `javax.imageio.*` usage
-in mods like MintSkinLewdTheSpire.
+in mods like `MintSkinLewdTheSpire` and `Haberdashery`.
+
+## Supported mods
+
+* Mods needs `javax.imageio.*` runtime like `MintSkinLewdTheSpire`
 
 ## Requirements
 - JDK 8 (or newer, but compile target is 1.8)
@@ -24,13 +28,11 @@ mvn -q clean package
 ```
 
 ## Develop
+
+After clone this resp to your PC, you should find ModTheSpire.jar, desktop-1.0.jar and BaseMod.jar to STSM Render Fixer/lib for dependencies.
+
 If you see many errors in your IDE, try this:
 
 1. Go File → Project Structure → Modules → Dependencies
 
 2. Find and add ModTheSpire.jar desktop-1.0.jar BaseMod.jar
-
-After packaging, the POM copies the jar to:
-`{Steam.path}/common/SlayTheSpire/mods/mintskin_android_compat.jar`
-
-If you don't want auto-copy, remove the `maven-antrun-plugin` section from the POM.

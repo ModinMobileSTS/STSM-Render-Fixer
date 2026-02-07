@@ -1,105 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.stsm.compat</groupId>
-  <artifactId>stsm-render-fixer</artifactId>
-  <version>0.4.6</version>
-  <packaging>jar</packaging>
+    <groupId>io.stsm</groupId>
+    <artifactId>stsm-render-fixer</artifactId>
+    <version>0.5.0-debug13</version>
+    <name>STSM Render Fixer</name>
 
-  <name>STSM Render Fixer</name>
-  <description>Android render/runtime compatibility patch mod (STSM Render Fixer)</description>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <!--
-    This POM is intentionally "ExampleMod-style":
-    - uses system-scope jars from your local Steam / Workshop install
-    - copies the built jar into Slay the Spire's /mods folder at package time
-  -->
+    <dependencies>
+        <!-- These are provided by the game / STSM runtime -->
+        <dependency>
+            <groupId>com.megacrit.cardcrawl</groupId>
+            <artifactId>slaythespire</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/desktop-1.0.jar</systemPath>
+        </dependency>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl</groupId>
+            <artifactId>modthespire</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/modthespire.jar</systemPath>
+        </dependency>
 
-    <!-- Change this to your Steam library root (the folder that contains /common and /workshop). -->
-    <Steam.path>E:\SteamLibrary\steamapps</Steam.path>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl</groupId>
+            <artifactId>basemod</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/basemod.jar</systemPath>
+        </dependency>
 
-    <!-- Desktop game jar -->
-    <SlayTheSpire.jar>${Steam.path}/common/SlayTheSpire/desktop-1.0.jar</SlayTheSpire.jar>
+        <dependency>
+            <groupId>com.badlogicgames.gdx</groupId>
+            <artifactId>gdx</artifactId>
+            <version>1.10.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-    <!-- Workshop paths below are examples; your IDs can differ. -->
-    <ModTheSpire.jar>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</ModTheSpire.jar>
-    <BaseMod.jar>${Steam.path}/workshop/content/646570/1605833019/BaseMod.jar</BaseMod.jar>
-  </properties>
-
-  <dependencies>
-    <!-- Not strictly required for this compat mod, but kept to mirror the "official ExampleMod" style. -->
-    <dependency>
-      <groupId>com.megacrit.cardcrawl</groupId>
-      <artifactId>slaythespire</artifactId>
-      <version>local</version>
-      <scope>system</scope>
-      <systemPath>${SlayTheSpire.jar}</systemPath>
-    </dependency>
-
-    <!-- REQUIRED: provides SpirePatch/SpireRawPatch annotations + Javassist -->
-    <dependency>
-      <groupId>com.evacipated.cardcrawl</groupId>
-      <artifactId>ModTheSpire</artifactId>
-      <version>local</version>
-      <scope>system</scope>
-      <systemPath>${ModTheSpire.jar}</systemPath>
-    </dependency>
-
-    <!-- Optional -->
-    <dependency>
-      <groupId>basemod</groupId>
-      <artifactId>basemod</artifactId>
-      <version>local</version>
-      <scope>system</scope>
-      <systemPath>${BaseMod.jar}</systemPath>
-      <optional>true</optional>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <finalName>stsm-render-fixer</finalName>
-
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
-
-      <!-- Copy the built jar into Slay the Spire's /mods directory (ExampleMod-style). -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <configuration>
-              <target>
-                <mkdir dir="${Steam.path}/common/SlayTheSpire/mods" />
-                <copy file="${project.build.directory}/${project.build.finalName}.jar"
-                      tofile="${Steam.path}/common/SlayTheSpire/mods/${project.build.finalName}.jar" />
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+    <build>
+        <finalName>stsm-render-fixer</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

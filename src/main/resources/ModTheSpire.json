@@ -2,11 +2,14 @@
   "modid": "stsm-render-fixer",
   "name": "STSM Render Fixer",
   "author_list": [
-    "Apricityx"
+    "STSM"
   ],
-  "description": "Android 兼容/渲染修复：1) 禁用 utils.GifHelper 的 ImageIO/GIF 加载以避免崩溃；2) 修复 Haberdashery 使用 Pixmap.Format.Alpha 创建 FrameBuffer 导致的 'incomplete attachment' 崩溃；3) (仅 Android) 在 Haberdashery 初始化时自动把其 haberdashery/ 资源解包到本地目录，解决 AttachDatabase 读取不到 JSON/骨骼/遮罩导致“模组不生效/遗物不显示”的问题。若遇到 frame buffer couldn't be constructed/IllegalStateException 或 Haberdashery 不生效等报错，可尝试启用本模组。",
-  "version": "0.4.6",
-  "sts_version": "12-22-2020",
-  "mts_version": "3.23.2",
-  "dependencies": []
+  "description": "STSM Render Fixer (debug build). Fixes Haberdashery FBO crash and adds Android resource fallback for Haberdashery database. Logs with [SRF_DEBUG]/[HABER_DEBUG].",
+  "version": "0.5.0-debug13",
+  "sts_version": "12-18-2022",
+  "mts_version": "3.30.0",
+  "dependencies": [
+    "basemod",
+    "stslib"
+  ]
 }

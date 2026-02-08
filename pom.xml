@@ -50,7 +50,7 @@
     </dependencies>
 
     <build>
-        <finalName>stsm-render-fixer</finalName>
+        <finalName>STSMRenderFixer</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

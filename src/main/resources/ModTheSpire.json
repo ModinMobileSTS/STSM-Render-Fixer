@@ -4,8 +4,8 @@
   "author_list": [
     "STSM"
   ],
-  "description": "STSM Render Fixer (debug build). Fixes Haberdashery FBO crash and adds Android resource fallback for Haberdashery database. Logs with [SRF_DEBUG]/[HABER_DEBUG].",
-  "version": "0.5.0-debug13",
+  "description": "STSM Render Fixer. Fixes Haberdashery FBO crash, adds Android resource fallback for Haberdashery database, and uses an Android safe-render path for RyoikiTenkai AfterImage to prevent UI freeze while keeping the effect visible (with extra [RYOIKI_DEBUG] diagnostics). Logs with [SRF_DEBUG]/[HABER_DEBUG].",
+  "version": "0.5.10",
   "sts_version": "12-18-2022",
   "mts_version": "3.30.0",
   "dependencies": [

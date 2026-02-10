@@ -6,7 +6,7 @@
 
     <groupId>io.stsm</groupId>
     <artifactId>stsm-render-fixer</artifactId>
-    <version>0.5.0-debug13</version>
+    <version>0.5.10</version>
     <name>STSM Render Fixer</name>
 
     <properties>
